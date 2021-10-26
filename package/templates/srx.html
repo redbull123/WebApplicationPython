@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)https://getbootstrap.com/docs/4.3/examples/sticky-footer-navbar/ -->
+<html lang="en" class="h-100">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Packet Core</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/sticky-footer-navbar/">
+
+
+    <link href="static/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  
+    <link href="static/ticky-footer-navbar.css" rel="stylesheet">
+
+  </head>
+  <body class="d-flex flex-column h-100">
+    <header>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand">Packet Core</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">LogOut <span class="sr-only">(current)</span></a>
+        </li>
+ 	<li class="">
+     <script type = "text/javascript">
+    var sub = false;
+    
+    </script>
+         <form  class="form-inline mt-2 mt-md-0" action = "/srx" method = "POST" onsubmit="if(sub == false ) {sub=true; return true}else{ alert('Your request is being processed!'); return false;}">
+          <select class="form-control mr-sm-2" name="select" value={{request.form.select}}>
+                  <option value="option">- Select -</option>
+                  <option value="Corporativo">Corporativo</option>
+                  <option value="Fase I">Fase I </option>
+                  <option value="Fase II">Fase II</option>
+                </select>
+        <input class="form-control mr-sm-2" onkeypress="return IsAlphaNumeric(event);" type="text" placeholder="Search" name="ip"  minlength="3" required value={{request.form.ip}}>
+          <span id="error" style="color: Red; display: none">* Special Characters not allowed.</span> 
+	<input  class="btn btn-outline-success  my-2 my-sm-0 " type="submit" value = "Submit"  onclick="div_show()" />
+        </form>
+        </li>
+	    </ul>
+    </div>
+  
+  </nav>
+</header>
+<main>
+    <p id ='out' class="container"></p>
+
+    <p>
+      {{ status }}
+    </p>
+    <p>
+      {{variable}}
+    </p>
+
+</main>
+
+
+<footer class="footer mt-auto py-3"> 
+  <div class="container">
+    <span class="text-muted">Made By Ing. Raul Santana.</span>
+  </div>
+</footer>
+
+<script href="js/jquery-3.3.1.slim.min.js"></script>
+      <script>window.jQuery || document.write('<script href="js/jquery-slim.min.js"><\/script>')</script><script href="js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+  if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
+  }
+  </script>
+
+<script type="text/javascript">
+  var specialKeys = new Array();
+  specialKeys.push(8);  //Backspace
+  specialKeys.push(9);  //Tab
+  specialKeys.push(46); //Delete
+  specialKeys.push(36); //Home
+  specialKeys.push(35); //End
+  specialKeys.push(37); //Left
+  specialKeys.push(39); //Right
+  
+
+  function IsAlphaNumeric(e) {
+      var keyCode = e.keyCode == 0 ? e.charCode : e.keyCode;
+      var ret = ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 65 && keyCode <= 90)  || (keyCode >= 97 && keyCode <= 122) || (specialKeys.indexOf(e.keyCode) != -1 && e.charCode != e.keyCode));
+      document.getElementById("error").style.display = ret ? "none" : "inline";
+      return ret;
+  }
+</script> 
+
+</body>
+</html>

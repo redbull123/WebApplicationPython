@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>  
+    <title>Packet Core</title>
+
+    <link href="static/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <link href="static/ticky-footer-navbar.css" rel="stylesheet">
+  </head>
+  <body class="d-flex flex-column h-100">
+    <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">LogOut <span class="sr-only">(current)</span></a>
+        </li>
+ 	<li class="">
+     <script type = "text/javascript">
+    var sub = false;
+    </script>
+         <form  class="form-inline mt-2 mt-md-0" action = "/ebm" method = "POST"onsubmit="if(sub == false ) {sub=true; return true}else{ alert('Your request is being processed!'); return false;}">
+          <select class="form-control mr-sm-2" name="select" value={{request.form.select}}>
+                  <option value="option">- SGSN -</option>
+                  <option value="3">SGSN-MME03</option>
+                  <option value="4">SGSN-MME04</option>
+                  <option value="5">SGSN-MME05</option>
+                  <option value="6">SGSN-MME06</option>
+                  <option value="7">SGSN-MME07</option>
+                  <option value="8">SGSN-MME08</option>
+                  <option value="9">SGSN-MME09</option>
+                </select>
+          <input class="form-control mr-sm-2" onkeypress="return IsAlphaNumeric(event);" type="text" placeholder="YYYYMMDD" name="fecha"  minlength="8" maxlength="8" required value={{request.form.fecha}}>
+          <select class="form-control mr-sm-2" name="hora" value={{request.form.hora}}>
+            <option value="Hora">- Hora -</option>
+            <option value="00">00</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+          </select>
+          <select class="form-control mr-sm-2" name="minuto" value={{request.form.minuto}}>
+            <option value="Minuto">- Minuto -</option>
+            <option value="00">00</option>
+            <option value="05">05</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="30">30</option>
+            <option value="35">35</option>
+            <option value="40">40</option>
+            <option value="45">45</option>
+            <option value="50">50</option>
+            <option value="55">55</option>
+          </select>
+          <select class="form-control mr-sm-2" name="requerimiento" value={{request.form.requerimiento}}>
+            <option value="sImsi">IMSI</option>
+            <option value="ATTACH">ATTACH</option>
+            <option value="ACTIVATE">ACTIVATE</option>
+            <option value="RAU">RAU</option>
+            <option value="ISRAU">ISRAU</option>
+            <option value="DEACTIVATE">DEACTIVATE</option>
+            <option value="L_ATTACH">L_ATTACH</option>
+            <option value="L_DETACH">L_DETACH</option>
+            <option value="L_HANDOVER">L_HANDOVER</option>
+            <option value="L_TAU">L_TAU</option>
+            <option value="L_DEDICATED_BEARER_ACTIVATE">L_DEDICATED_BEARER_ACTIVATE</option>
+            <option value="L_DEDICATED_BEARER_DEACTIVATE">L_DEDICATED_BEARER_DEACTIVATE</option>
+            <option value="L_PDN_CONNECT">L_PDN_CONNECT</option>
+            <option value="L_PDN_DISCONNECT">L_PDN_DISCONNECT</option>  
+            <option value="L_SERVICE_REQUEST">L_SERVICE_REQUEST</option>  
+            <option value="DETACH">DETACH</option>  
+            <option value="SERVICE_REQUEST">SERVICE_REQUEST</option>  
+            <option value="L_BEARER_MODIFY">L_BEARER_MODIFY</option>  
+            <option value="L_CDMA2000">L_CDMA2000</option>  
+          </select>
+          <select class="form-control mr-sm-2" name="filtro" value={{request.form.filtro}}>
+            <option value="0">- Filtro (Optional) -</option>
+            <option value="1">Cause Code</option>
+            <option value="2">CC - SSC</option>
+            <option value="3">CC - TAC</option>
+          </select>
+          <select class="form-control mr-sm-2" name="cantidad" value={{request.form.cantidad}}>
+            <option value="0">- Cantidad A Contar (Optional)-</option>
+            <option value="1">Cause Code</option>
+            <option value="2">TAC</option>
+            <option value="3">RAC</option>
+            <option value="4">LAC</option>
+            <option value="5">ECI (Seleccionar CC - TAC)</option>
+            <option value="6">CSFALLBACK</option>
+          </select>
+          <input class="form-control mr-sm-2"  type="text" placeholder="one@two" name="imsi"  minlength="1" maxlength="20" required value={{request.form.imsi}}>
+          <span id="error" style="color: Red; display: none">* Special Characters not allowed.</span>
+         <input  class="btn btn-outline-success  my-2 my-sm-0 " type="submit" value = "Submit" onclick="div_show()"/>
+        </form>
+        </li>
+      </ul>
+    </div>
+  
+  </nav>
+</header>
+<main>
+  <p  class="container">
+
+
+
+
+
+
+
+  </p>
+
+  <p id ='out' class="container"></p>
+  <script>
+    var texto = '{{variable}}';
+    var i = 0;
+    var text = "";
+    for(i=0; i< texto.length; i++){
+      if(texto.charAt(i) === '@')
+      {
+        text += "<br>"
+      }
+      else if (texto.charAt(i) !== '@'){
+        text += texto[i];
+      }
+    }
+
+     document.getElementById("out").innerHTML = text;
+    </script>
+	 <p  id = outLogs class="btn-outline-success  my-2 my-sm-0"></p>
+
+    <script>
+      var texto = '{{out_log}}';
+      var i = 0;
+      var text = "";
+      for(i=0; i< texto.length; i++){
+        if(texto.charAt(i) === '$')
+        {
+          text += "<br>"
+        }
+        else if (texto.charAt(i) !== '$'){
+          text += texto[i];
+        }
+      }
+  
+       document.getElementById("outLogs").innerHTML = text;
+      </script>
+        <p class="btn-outline-success  my-2 my-sm-0">
+
+
+            Intrucciones: <br>
+            - Tomar en cuanta que el SGSN03 genera los EBM cada 5 minutos, a diferencia de los otros SGSN que generan los EBM por lotes de 15 minutos.<br>
+            Combinaciones Posibles:<br>
+              - Cualquier Evento -Sin Filtro - Sin Cantidad a contar: Observar el Evento en Detalle<br>
+              - Cualquier Evento - Filtro Cause Code - sin Cantidad a contar: Observar un Cause Code en especifico <br>
+              - Cualquier Evento - Filtro Cause Code - Cantidad a contar LAC/RAC/TAC: Contar LAC/RAC/TAC para el Cause Code indicado<br>
+              - Cualquier Evento - Filtro CC-SSC - sin Cantidad a contar: Observas un Cause Code con su SSC especifico(Sintaxis: cc@ssc) <br>
+              - Cualquier Evento - Filtro CC-SSC - Cantidad a contar LAC/RAC/TAC: Contar LAC/RAC/TAC para el un par CC/SSC especifico (Sintaxis: cc@ssc)<br>
+              - Cualquier Evento - Filtro CC-TAC - Cantidad a Contar ECI: Contar los ECI del par especifico CC/TAC (Sintaxis: cc@tac) <br>
+              - Cualquier Evento - Sin Filtro - Cantidad a Contar Cause Code: Contar los Cause Code un Evento especifico <br>
+              - IMSI - Sin Filtro - Sin Cantidad a Contar : Busca logs generados por una IMSI en especifico <br>
+         
+              Nota: Cualquier otra combinación, el programa no lo procesara.
+         
+          </p>
+</main>
+
+<footer class="footer mt-auto py-3">
+  <div class="container">
+    <span class="text-muted">Made By Ing. Raul Santana.</span>
+  </div>
+</footer>
+ 
+<script href="js/jquery-3.3.1.slim.min.js"></script>
+      <script>window.jQuery || document.write('<script href="js/jquery-slim.min.js"><\/script>')</script><script href="js/bootstrap.bundle.min.js"></script>
+
+<script>
+  if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
+  }
+  </script>
+     <script type="text/javascript">
+  var specialKeys = new Array();
+  specialKeys.push(8);  //Backspace
+  specialKeys.push(9);  //Tab
+  specialKeys.push(46); //Delete
+  specialKeys.push(36); //Home
+  specialKeys.push(35); //End
+  specialKeys.push(37); //Left
+  specialKeys.push(39); //Right
+  
+  function IsAlphaNumeric(e) {
+      var keyCode = e.keyCode == 0 ? e.charCode : e.keyCode;
+      var ret = ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 65 && keyCode <= 90)  || (keyCode >= 97 && keyCode <= 122) || (specialKeys.indexOf(e.keyCode) != -1 && e.charCode != e.keyCode));
+      document.getElementById("error").style.display = ret ? "none" : "inline";
+      return ret;
+  }
+</script> 
+</body>
+</html>
